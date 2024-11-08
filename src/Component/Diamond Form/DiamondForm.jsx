@@ -72,7 +72,7 @@ const DiamondForm = () => {
                     </div>
                 </div>
 
-                <select placeholder="select diamond type">
+                <select placeholder="select diamond type" className='w-full text-gray-900 py-2.5 border-black border-0 border-b-2 mb-4'>
                     {
                         valdropdown.map((val) => {
                             return (

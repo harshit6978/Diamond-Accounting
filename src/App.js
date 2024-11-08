@@ -5,6 +5,7 @@ import Navbar from './Component/Navbar/Navbar';
 import ShowEntry from './Component/Entry/ShowEntry';
 import AddBroker from './Component/AddBroker/AddBroker';
 import GetBroker from './GetBroker/GetBroker';
+import Login from './Component/Login/Login';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
 
         </Route>
       </Routes>
+      {/* <Login/> */}
      
     </>
   );
