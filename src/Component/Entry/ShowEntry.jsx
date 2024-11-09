@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2'
 
 const ShowEntry = () => {
   const [diamondEntry, setDiamondEntry] = useState([]);
@@ -49,6 +50,37 @@ const ShowEntry = () => {
     setSelectedRow(null);
   };
 
+  const deleteEntry = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`https://diamond-be.onrender.com/api/v1/daimond/delete-diamond/${id}`)
+          .then(() => {
+            setDiamondEntry(diamondEntry.filter((entry) => entry._id !== id));
+          })
+          .catch((error) => {
+            console.error("There was an error deleting the entry!", error);
+          });
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
+
+
+
+  };
   return (
     <div className="flex flex-col px-14 pt-5 ">
       <div className="-m-1.5 overflow-x-auto">
@@ -78,7 +110,7 @@ const ShowEntry = () => {
                     <th scope="col" className=" py-3 text-start text-xs font-medium text-white uppercase dark:text-neutral-100">More</th>
                   </tr>
                 </thead>
-                
+
                 <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
                   {currentBrokers.map((ele, index) => (
                     <tr key={index}>
@@ -90,7 +122,7 @@ const ShowEntry = () => {
                         })}
                       </td>
                       <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-500">{ele.partyName}</td>
-                      <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-500">{ele.brokerName}</td>
+                      <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-500">{ele.brokerName.name}</td>
                       <td className="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-500">
                         {new Date(ele.paymentDate).toLocaleDateString('en-US', {
                           year: 'numeric',
@@ -102,8 +134,8 @@ const ShowEntry = () => {
 
                       <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-500">
                         <button onClick={() => openModal(ele)} className="text-blue-600 hover:text-blue-800"><i className="pi pi-list mr-3"></i></button>
-                        <button className="text-blue-600 hover:text-blue-800"><i className="pi pi-trash mr-3"></i></button>
-                        <button  className="text-blue-600 hover:text-blue-800"><i className="pi pi-pen-to-square"></i></button>
+                        <button className="text-blue-600 hover:text-blue-800" onClick={() => deleteEntry(ele._id)}><i className="pi pi-trash mr-3"></i></button>
+                        <button className="text-blue-600 hover:text-blue-800"><i className="pi pi-pen-to-square"></i></button>
                       </td>
                     </tr>
                   ))}

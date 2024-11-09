@@ -27,6 +27,8 @@ const GetBroker = () => {
 
 
   const deleteBroker = (id) => {
+    console.log(id,"iddddd");
+    
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",

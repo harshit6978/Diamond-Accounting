@@ -26,46 +26,46 @@ const AddBroker = () => {
   const toast = useRef(null);
 
   const showSuccess = () => {
-      toast.current.show({severity:'success', summary: 'Success', detail:'Redord Added', life: 3000});
+    toast.current.show({ severity: 'success', summary: 'Success', detail: 'Redord Added', life: 3000 });
   }
   return (
     <>
-            <Toast ref={toast} />
+      <Toast ref={toast} />
 
-    <form className="max-w-md mx-auto mt-3 p-5 border rounded" onSubmit={handleSubmit}>
-      <h1 className="text-xl mb-3">Add Broker (દલાલ ઉમેરો)</h1>
+      <form className="max-w-md mx-auto mt-3 p-5 border rounded" onSubmit={handleSubmit}>
+        <h1 className="text-xl mb-3">Add Broker (દલાલ ઉમેરો)</h1>
 
-      <div className='relative z-0 w-full mb-5 group'>
-        <input
-          type="text"
-          name="name"
-          placeholder=" "
-          required
-          value={formData.name}
-          onChange={handleChange}
-          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        <div className='relative z-0 w-full mb-5 group'>
+          <input
+            type="text"
+            name="name"
+            placeholder=" "
+            required
+            value={formData.name}
+            onChange={handleChange}
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
 
-        />
-        <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Broker Name(દલાલનું નામ)</label>
-      </div>
+          />
+          <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Broker Name(દલાલનું નામ)</label>
+        </div>
 
-      <div className='relative z-0 w-full mb-5 group'>
-        <input
-          type="number"
-          placeholder=" "
-          name="mobile_no"
-          value={formData.mobile_no}
-          required
-          onChange={handleChange}
-          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-        />
-        <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Mobile No (મોબાઇલ નં)</label>
-      </div>
+        <div className='relative z-0 w-full mb-5 group'>
+          <input
+            type="number"
+            placeholder=" "
+            name="mobile_no"
+            value={formData.mobile_no}
+            required
+            onChange={handleChange}
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          />
+          <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Mobile No (મોબાઇલ નં)</label>
+        </div>
 
-      <button type="submit" className="w-full p-2 bg-blue-700 text-white rounded" onClick={showSuccess}>
-        Submit
-      </button>
-    </form>
+        <button type="submit" className="w-full p-2 bg-blue-700 text-white rounded" onClick={showSuccess}>
+          Submit
+        </button>
+      </form>
     </>
   );
 };
