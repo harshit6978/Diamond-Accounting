@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
-import { Toast } from 'primereact/toast';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddBroker = () => {
   const [formData, setFormData] = useState({ name: '', mobile_no: '' });
@@ -8,14 +9,29 @@ const AddBroker = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('https://diamond-be.onrender.com/api/v1/broker/add-broker', formData)
-      .then((res) => {
-        // alert('Broker added successfully!');
-        setFormData({ name: '', mobile_no: '' });
-      })
-      .catch((err) => {
-        alert('Error adding broker: ' + (err.response ? err.response.data.message : err.message));
-      });
+    if (formData.mobile_no.length !== 10) {
+      toast.error("Mobile number must be 10 digits")
+      // alert("Mobile number must be 10 digits.");
+      // return;
+    }
+    try {
+      axios.post('https://diamond-be.onrender.com/api/v1/broker/add-broker', formData)
+        .then((res) => {
+          if (res == 200 || 201) {
+            toast.success("Data Added Successfully")
+          }
+          console.log(res,"res");
+          
+          // alert('Broker added successfully!');
+          setFormData({ name: '', mobile_no: '' });
+        })
+        .catch((err) => {
+          alert('Error adding broker: ' + (err.response ? err.response.data.message : err.message));
+        });
+    } catch (err) {
+      toast.error(err)
+    }
+
   };
 
   const handleChange = (e) => {
@@ -23,16 +39,16 @@ const AddBroker = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const toast = useRef(null);
+  // const toast = useRef(null);
 
-  const showSuccess = () => {
-    toast.current.show({ severity: 'success', summary: 'Success', detail: 'Redord Added', life: 3000 });
-  }
+  // const showSuccess = () => {
+  //   toast.current.show({ severity: 'success', summary: 'Success', detail: 'Redord Added', life: 3000 });
+  // }
   return (
     <>
-      <Toast ref={toast} />
+      <ToastContainer position="top-right" />
 
-      <form className="max-w-md mx-auto mt-3 p-5 border rounded" onSubmit={handleSubmit}>
+      <form className="max-w-md mx-auto mt-28 ml-[650px] p-5 border rounded" onSubmit={handleSubmit}>
         <h1 className="text-xl mb-3">Add Broker (દલાલ ઉમેરો)</h1>
 
         <div className='relative z-0 w-full mb-5 group'>
@@ -62,10 +78,12 @@ const AddBroker = () => {
           <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Mobile No (મોબાઇલ નં)</label>
         </div>
 
-        <button type="submit" className="w-full p-2 bg-blue-700 text-white rounded" onClick={showSuccess}>
+        <button type="submit" className="w-full p-2 bg-red-600 hover:bg-red-500 text-white rounded">
           Submit
         </button>
       </form>
+
+
     </>
   );
 };
