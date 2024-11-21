@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Diamond-Accounting/static/css/main.0695bc7b.css",
+    "main.js": "/Diamond-Accounting/static/js/main.d5c63390.js",
+    "static/js/453.ed3810f9.chunk.js": "/Diamond-Accounting/static/js/453.ed3810f9.chunk.js",
+    "static/media/primeicons.svg": "/Diamond-Accounting/static/media/primeicons.6ed59f962963a4a73af2.svg",
+    "static/media/primeicons.eot": "/Diamond-Accounting/static/media/primeicons.ff0c4cd79b2ffca2de54.eot",
+    "static/media/primeicons.woff": "/Diamond-Accounting/static/media/primeicons.8931fda1930c3bd21e96.woff",
+    "static/media/primeicons.ttf": "/Diamond-Accounting/static/media/primeicons.a5c2a53d1ff7a9ff5933.ttf",
+    "static/media/primeicons.woff2": "/Diamond-Accounting/static/media/primeicons.024b32cc7bf399b1a847.woff2",
+    "index.html": "/Diamond-Accounting/index.html",
+    "main.0695bc7b.css.map": "/Diamond-Accounting/static/css/main.0695bc7b.css.map",
+    "main.d5c63390.js.map": "/Diamond-Accounting/static/js/main.d5c63390.js.map",
+    "453.ed3810f9.chunk.js.map": "/Diamond-Accounting/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0695bc7b.css",
+    "static/js/main.d5c63390.js"
+  ]
+}
