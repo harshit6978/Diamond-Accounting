@@ -30,7 +30,7 @@ const GetExpanse = () => {
     (b.description && b.description.toLowerCase().includes(searchTerm)) ||
     (b.amount && b.amount.toString().includes(searchTerm))
   );
-  
+
   const indexOfLastExpanse = currentPage * brokersPerPage;
   const indexOfFirstExpanse = indexOfLastExpanse - brokersPerPage;
   const currentExpanse = filteredBrokers.slice(indexOfFirstExpanse, indexOfLastExpanse);
@@ -161,35 +161,48 @@ const GetExpanse = () => {
                           </button>
 
                           <div className="card flex justify-content-center">
-                            <Dialog visible={visible} model style={{ width: '35vw' }} onHide={() => { if (!visible) return; setVisible(false); }}>
-                              <form className="max-w-md mx-auto mt-3 p-5 border rounded" >
-                                <h1 className="text-xl mb-3">Update Broker (દલાલ અપડેટ કરો )</h1>
+                            <Dialog visible={visible} model style={{ width: '35vw' }} className='bg-red-100' onHide={() => { if (!visible) return; setVisible(false); }}>
+                              <form className="max-w-md mx-auto  p-5 border rounded" >
+                                <h1 className="text-xl mb-5">Add Expense (ખર્ચ ઉમેરો)</h1>
 
                                 <div className='relative z-0 w-full mb-5 group'>
                                   <input
-                                    type="text"
-                                    name="name"
+                                    type="date"
+                                    name="purchase_Date"
                                     placeholder=" "
                                     required
-                                    // value={formData.name}
+                                    // value={formData.purchase_Date}
                                     // onChange={handleChange}
                                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
 
                                   />
-                                  <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Broker Name(દલાલનું નામ)</label>
+                                  <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date(તારીખ)</label>
+                                </div>
+
+                                <div className='relative z-0 w-full mb-5 group'>
+                                  <input
+                                    type="text"
+                                    placeholder=" "
+                                    name="description"
+                                    // value={formData.description}
+                                    required
+                                    // onChange={handleChange}
+                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                  />
+                                  <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Expense(ખર્ચ)</label>
                                 </div>
 
                                 <div className='relative z-0 w-full mb-5 group'>
                                   <input
                                     type="number"
                                     placeholder=" "
-                                    name="mobile_no"
-                                    // value={formData.mobile_no}
+                                    name="amount"
+                                    // value={formData.amount}
                                     required
                                     // onChange={handleChange}
                                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                   />
-                                  <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Mobile No (મોબાઇલ નં)</label>
+                                  <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount(રકમ)</label>
                                 </div>
 
                                 <button type="submit" className="w-full p-2 bg-red-600 hover:bg-red-500 text-white rounded">
