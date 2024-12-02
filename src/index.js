@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import 'primereact/resources/themes/saga-blue/theme.css';  // Theme file
 import 'primereact/resources/primereact.min.css';          // Core PrimeReact styles
-import 'primeicons/primeicons.css';  
+import "primeicons/primeicons.css";
+ 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <App />
+    <App /> 
   </BrowserRouter>
 );
 
